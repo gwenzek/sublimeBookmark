@@ -198,7 +198,8 @@ class SublimeBookmarkCommand(sublime_plugin.WindowCommand):
 		global BOOKMARKS
 		global ERASED_BOOKMARKS
 
-		for bookmark in BOOKMARKS:
+		visibles = getVisibleBookmarks(BOOKMARKS, self.window, self.activeView, BOOKMARKS_MODE)			
+		for bookmark in visibles:
 			#store erased bookmarks for delayed removal
 			ERASED_BOOKMARKS.append(deepcopy(bookmark))
 			
